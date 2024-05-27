@@ -12,7 +12,7 @@ def YouTubeDownloader(url, output_path='.'):
         'format': 'best'
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        # ydl.download([url])
+        ydl.download([url])
         info_dict = ydl.extract_info(url, download=True)
     video_title = info_dict.get('title')
     video_id = info_dict.get('id')
