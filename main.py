@@ -12,7 +12,7 @@ async def start(message: types.Message):
 
 @dp.message_handler()
 async def start(message: types.Message):
-    if message.text.startswith("https://youtube.com/") or message.text.startswith("https://youtu.be/"):
+    if message.text.startswith("https://youtube.com/") or message.text.startswith("https://youtu.be/") or message.text.startswith("https://www.youtube.com/") or message.text.startswith("https://www.youtu.be/"):
         await message.answer("Video yuklanmoqda...")
         try:
             downloaded = YouTubeDownloader(message.text)
