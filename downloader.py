@@ -9,7 +9,7 @@ def YouTubeDownloader(url, output_path='.'):
         #     'preferredcodec': 'mp3',  # Convert audio to mp3
         #     'preferredquality': '192',  # Set the preferred quality (bitrate)
         # }],
-        'format': 'best'
+        'format': 'bestvideo/best'
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
