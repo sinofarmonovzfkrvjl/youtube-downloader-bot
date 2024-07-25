@@ -14,15 +14,21 @@ async def start(message: types.Message):
 async def start(message: types.Message):
     if message.text.startswith("https://youtube.com/") or message.text.startswith("https://youtu.be/"):
         await message.answer("Video yuklanmoqda...")
-        downloaded = YouTubeDownloader(message.text)
-        with open("video.mp4", "rb") as video:
-            info = f"Video nomi: {downloaded['title']}\nvideoni yuklagan foydalanuvchi: https://youtube.com/@{downloaded['uploader']}\nvideoni yuklangan sanasi: {downloaded['upload_date']}"
-            info2 = f"videodagi ko'rishlar soni: {downloaded['view_count']}\nvideodagi likelar soni: {downloaded['like_count']}\nvideoni tavsifi: {downloaded['description']}"
-            await message.answer_video(video=video, caption=f"{info}")
-            await message.answer(info2)
+        try:
+            downloaded = YouTubeDownloader(message.text)
+            with open("video.mp4", "rb") as video:
+                info = f"Video nomi: {downloaded['title']}\nvideoni yuklagan foydalanuvchi: https://youtube.com/@{downloaded['uploader']}\nvideoni yuklangan sanasi: {downloaded['upload_date']}"
+                info2 = f"videodagi ko'rishlar soni: {downloaded['view_count']}\nvideodagi likelar soni: {downloaded['like_count']}\nvideoni tavsifi: {downloaded['description']}"
+                await message.answer_video(video=video, caption=f"{info}")
+                await message.answer(info2)
+        except:
+            await message.answer("Bu videoni yuklayolmadim")
     else:
         await message.answer(message.text)
-    os.remove("video.mp4")
+    try:
+        os.remove("video.mp4")
+    except:
+        pass
 
 
 if __name__=='__main__':
