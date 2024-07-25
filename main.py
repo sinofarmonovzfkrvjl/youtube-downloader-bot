@@ -29,6 +29,22 @@ async def start(message: types.Message):
         os.remove("video.mp4")
     except:
         pass
+    try:
+        os.remove("video.mp4.part")
+    except:
+        pass
+    try:
+        os.remove("video.mp4.dlp")
+    except:
+        pass
+    try:
+        os.remove("video.mp4.dlp.part")
+    except:
+        pass
+    try:
+        os.remove("video.mp4.dlpt")
+    except:
+        pass
 
 
 if __name__=='__main__':
